@@ -11,16 +11,16 @@ public class Main {
     Dijkstra dijkstra = new Dijkstra(graph);
     calculateNewPathWithBothAlgorithms(startId, goalId, graph, dstarLite, dijkstra);
 
-    dstarLite.updateEdge(10, 27, 1);
+    dstarLite.updateEdge(10, 27, 1);// obecnie to psuje
     dstarLite.updateEdge(20, 29, 20);
 ////    dstarLite.updateEdge(0, 1, 0.5);
     calculateNewPathWithBothAlgorithms(startId, goalId, graph, dstarLite, dijkstra);
 //
     dstarLite.updateEdge(1, 8, 0.5);
     dstarLite.updateEdge(27, 28, 10);
-    dstarLite.updateEdge(1, 28, 10);
+//    dstarLite.updateEdge(1, 28, 10);
     dstarLite.updateEdge(2, 28, 10);
-//    dstarLite.updateEdge(3, 28, 10);
+    dstarLite.updateEdge(3, 28, 10);
     dstarLite.updateEdge(3, 28, 2);
 //    dstarLite.updateEdge(28, 29, 2);
 //    dstarLite.updateEdge(4, 5, 20);
@@ -111,6 +111,8 @@ public class Main {
     graph.addEdge(10, 27, 5);
     graph.addEdge(15, 28, 5);
     graph.addEdge(20, 29, 5);
+//    graph.addEdge(3, 29, 5123);
+    graph.addEdge(10, 27, 5123);
     return graph;
   }
 
