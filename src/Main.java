@@ -11,19 +11,20 @@ public class Main {
     Dijkstra dijkstra = new Dijkstra(graph);
     calculateNewPathWithBothAlgorithms(startId, goalId, graph, dstarLite, dijkstra);
 
-    dstarLite.updateEdge(10, 27, 1);// obecnie to psuje
+    dstarLite.updateEdge(10, 27, 1);
     dstarLite.updateEdge(20, 29, 20);
-////    dstarLite.updateEdge(0, 1, 0.5);
+    dstarLite.updateEdge(0, 29, 0);
     calculateNewPathWithBothAlgorithms(startId, goalId, graph, dstarLite, dijkstra);
 //
     dstarLite.updateEdge(1, 8, 0.5);
     dstarLite.updateEdge(27, 28, 10);
-//    dstarLite.updateEdge(1, 28, 10);
+    dstarLite.updateEdge(9, 17, 0);
+    dstarLite.updateEdge(1, 28, 10);
     dstarLite.updateEdge(2, 28, 10);
     dstarLite.updateEdge(3, 28, 10);
     dstarLite.updateEdge(3, 28, 2);
-//    dstarLite.updateEdge(28, 29, 2);
-//    dstarLite.updateEdge(4, 5, 20);
+    dstarLite.updateEdge(28, 29, 2);
+    dstarLite.updateEdge(4, 5, 20);
     calculateNewPathWithBothAlgorithms(startId, goalId, graph, dstarLite, dijkstra);
 
   }
@@ -111,8 +112,9 @@ public class Main {
     graph.addEdge(10, 27, 5);
     graph.addEdge(15, 28, 5);
     graph.addEdge(20, 29, 5);
-//    graph.addEdge(3, 29, 5123);
-    graph.addEdge(10, 27, 5123);
+    graph.addEdge(3, 28, 2);
+    graph.addEdge(1, 28, 22);
+//    graph.addEdge(10, 27, 5123);
     return graph;
   }
 
@@ -142,6 +144,8 @@ public class Main {
       System.out.println("DStarLite and Dijkstra path cost are not equal");
       throw new RuntimeException("DStarLite and Dijkstra path cost are not equal");
     }
+    System.out.println("---------------------------------------");
+
   }
 
   private static double findAndPrintShortestPathDStarLite(DStarLite dstarLite, Graph graph) {

@@ -71,7 +71,7 @@ public class DStarLite {
 
   private double heuristic(Node start, Node goal) {
 //    return Math.sqrt(Math.pow(goal.x - start.x, 2) + Math.pow(goal.y - start.y, 2));
-  return 0;
+    return 0;
   }
 
   private void updateVertex(int nodeId) {
@@ -120,6 +120,15 @@ public class DStarLite {
     int v = node2;
     if (!graph.edgeExists(u, v)) {
       graph.addEdge(u, v, Double.POSITIVE_INFINITY);
+//      throw new RuntimeException("Edge " + u + "-" + v + " does not exist");
+      // IDK if this is nessesary
+      NodeWrapper newNodeWrapper = new NodeWrapper(graph.getNode(u), calculateKey(u));
+      U.add(newNodeWrapper);
+      nodeWrapperMap.put(u, newNodeWrapper);
+      NodeWrapper newNodeWrapper2 = new NodeWrapper(graph.getNode(v), calculateKey(v));
+      U.add(newNodeWrapper2);
+      nodeWrapperMap.put(v, newNodeWrapper2);
+      // IDK if this is nessesary
     }
     double oldWeight = graph.getEdgeWeight(u, v);
     graph.addEdge(u, v, newWeight);
@@ -176,7 +185,7 @@ public class DStarLite {
 //            !rhsValues.get(startId).equals(gValues.get(startId)))) {
     while (!U.isEmpty() &&
         (Arrays.compare(U.peek().key, calculateKey(startId)) < 0 ||
-            rhsValues.get(startId)>gValues.get(startId))) {
+            rhsValues.get(startId) != gValues.get(startId))) {
       NodeWrapper u = U.peek();
       double k_old[] = u.key;
       double k_new[] = calculateKey(u.node.id);
@@ -204,6 +213,7 @@ public class DStarLite {
                 double cost = graph.getEdgeWeight(s, neighborId);
                 minRhs = Math.min(minRhs, cost + gValues.get(neighborId));
               }
+              rhsValues.put(s, minRhs);
             }
             updateVertex(s);
           }
