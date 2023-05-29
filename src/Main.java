@@ -1,8 +1,12 @@
 import java.util.List;
 
 public class Main {
-
   public static void main(String[] args) {
+    BatchLoader loader = new BatchLoader(args);
+
+    loader.loadFromStdio();
+  }
+  /*public static void main(String[] args) {
     Graph graph = getGraph();
 
     int startId = 0;
@@ -13,7 +17,7 @@ public class Main {
 
     dstarLite.updateEdge(10, 27, 1);
     dstarLite.updateEdge(20, 29, 20);
-    dstarLite.updateEdge(0, 29, 0);
+    dstarLite.updateEdge(0, 29,  0);
     calculateNewPathWithBothAlgorithms(startId, goalId, graph, dstarLite, dijkstra);
 //
     dstarLite.updateEdge(1, 8, 0.5);
@@ -177,5 +181,5 @@ public class Main {
         System.out.println("Edge weight: " + graph.getEdgeWeight(cur.id, next.id));
       }
     }
-  }
+  }*/
 }
